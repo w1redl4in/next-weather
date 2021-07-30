@@ -1,8 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   position: absolute;
   right: 1px;
+  top: 0px;
 
   height: 100vh;
   width: 35%;
@@ -21,6 +22,10 @@ export const Container = styled.div`
     font-size: ${({ theme }) => theme.fontSize.large};
     margin-bottom: 1rem;
   }
+
+  @media (max-width: ${({ theme }) => theme.mediaQuery[915]}) {
+    display: none;
+  }
 `;
 
 export const WeatherDetails = styled.div`
@@ -33,6 +38,10 @@ export const WeatherDetails = styled.div`
   > h1 {
     font-size: ${({ theme }) => theme.fontSize.normal};
     font-weight: ${({ theme }) => theme.fontWeight.bold};
+
+    @media (max-width: ${({ theme }) => theme.mediaQuery[915]}) {
+      font-size: ${({ theme }) => theme.fontSize.small};
+    }
   }
 `;
 
