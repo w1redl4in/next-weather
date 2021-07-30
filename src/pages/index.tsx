@@ -1,12 +1,12 @@
-import { AppContainer } from '../components/AppContainer';
+import { Container } from '../components/AppContainer/styles';
 import { WeatherInfo } from '../components/WeatherInfo';
 import { WeatherRegion } from '../components/WeatherRegion';
 
 export default function Home() {
   return (
-    <AppContainer>
+    <Container>
       <WeatherRegion />
       <WeatherInfo />
-    </AppContainer>
+    </Container>
   );
 }
