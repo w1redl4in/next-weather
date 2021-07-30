@@ -1,9 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+
+  height: 100vh;
 
   padding: 3rem 5rem;
 
@@ -12,6 +14,11 @@ export const Container = styled.div`
   }
 
   text-shadow: 1px 1px 20px ${({ theme }) => theme.colors.black};
+
+  @media (max-width: ${({ theme }) => theme.mediaQuery[915]}) {
+    padding: 0 2rem;
+    text-align: center;
+  }
 `;
 
 export const WeatherInfoContainer = styled.div`
@@ -20,6 +27,10 @@ export const WeatherInfoContainer = styled.div`
 
   > h1 {
     font-size: ${({ theme }) => theme.fontSize.huge};
+  }
+
+  @media (max-width: ${({ theme }) => theme.mediaQuery[915]}) {
+    flex-direction: column;
   }
 `;
 
