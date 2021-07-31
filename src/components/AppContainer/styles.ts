@@ -10,6 +10,8 @@ export const Container = styled.div<ContainerProps>`
   background-size: cover;
   height: 100vh;
 
+  background-color: grey;
+
   @media (max-width: ${({ theme }) => theme.mediaQuery[915]}) {
     width: 100%;
     height: auto;
