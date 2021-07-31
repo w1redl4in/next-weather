@@ -1,8 +1,19 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  background-image: url('https://images.unsplash.com/photo-1570997491915-47ade51fed9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80');
+type ContainerProps = {
+  image: string | undefined;
+};
+
+export const Container = styled.div<ContainerProps>`
+  background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+
+  @media (max-width: ${({ theme }) => theme.mediaQuery[915]}) {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: bottom;
+  }
 `;
