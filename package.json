@@ -9,9 +9,11 @@
     "moment": "^2.29.1",
     "next": "latest",
     "react": "^17.0.2",
+    "react-device-detect": "^1.17.0",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.2.3",
+    "unsplash-js": "^7.0.15"
   },
   "devDependencies": {
     "@types/moment": "^2.13.0",
