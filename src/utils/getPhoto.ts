@@ -1,10 +1,11 @@
 import unsplashApi from '../services/unsplash';
 import { setInLocalStorage } from './localStorage';
 import moment from 'moment';
+import { returnImageQueryAccordingToTime } from './photoQuery';
 
 export const getBackgroundPhoto = async (isMobile: boolean) => {
   const unsplash = await unsplashApi.search.getPhotos({
-    query: 'cold',
+    query: returnImageQueryAccordingToTime(),
     orientation: isMobile ? 'portrait' : 'landscape',
   });
 
