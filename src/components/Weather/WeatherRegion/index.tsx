@@ -1,6 +1,7 @@
 import * as WeatherRegionStyles from './styles';
 import moment from 'moment';
 import 'moment/locale/pt-br';
+import { capitalizeTheFirstLetterOfEachWord } from '../../../utils/capitilizeFirstLetter';
 type WeatherRegionProps = {
   mainTemp: number;
   name: string;
@@ -22,12 +23,12 @@ export const WeatherRegion: React.FC<WeatherRegionProps> = ({
         <WeatherRegionStyles.TimeAndRegionContainer>
           <h1>{name}</h1>
           <span>
-            {moment().locale('pt-br').format('HH:mm - dddd - M MMM  "D')}
+            {moment().locale('pt-br').format('HH:mm - dddd - D MMMM')}
           </span>
         </WeatherRegionStyles.TimeAndRegionContainer>
         <WeatherRegionStyles.IconAndDescriptionContainer>
           <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} />
-          <p>{description}</p>
+          <strong>{capitalizeTheFirstLetterOfEachWord(description)}</strong>
         </WeatherRegionStyles.IconAndDescriptionContainer>
       </WeatherRegionStyles.WeatherInfoContainer>
     </WeatherRegionStyles.Container>
