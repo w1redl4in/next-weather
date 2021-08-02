@@ -31,6 +31,12 @@ export const WeatherRegion: React.FC<WeatherRegionProps> = ({
           <strong>{capitalizeTheFirstLetterOfEachWord(description)}</strong>
         </WeatherRegionStyles.IconAndDescriptionContainer>
       </WeatherRegionStyles.WeatherInfoContainer>
+      <WeatherRegionStyles.Introduction>
+        <h2>Made with 💖 by Felipe Austríaco</h2>
+        <a href="https://felipeaustriaco.dev" target="_blank">
+          https://felipeaustriaco.dev
+        </a>
+      </WeatherRegionStyles.Introduction>
     </WeatherRegionStyles.Container>
   );
 };

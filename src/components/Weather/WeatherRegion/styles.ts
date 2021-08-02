@@ -61,3 +61,19 @@ export const IconAndDescriptionContainer = styled.div`
     filter: drop-shadow(0 0 0.8rem black);
   }
 `;
+
+export const Introduction = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    color: ${({ theme }) => theme.colors.text.primary};
+    font-size: ${({ theme }) => theme.fontSize.small};
+    text-shadow: 1px 1px 20px ${({ theme }) => theme.colors.black};
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.text.primary};
+    text-shadow: 1px 1px 20px ${({ theme }) => theme.colors.black};
+  }
+`;
