@@ -2,12 +2,12 @@ import moment from 'moment';
 
 export const returnImageQueryAccordingToTime = () => {
   if (moment().isBefore(moment().hour(12))) {
-    return 'cold evenings';
+    return 'evenings';
   } else if (moment().isBefore(moment().hour(16))) {
-    return 'cold afternoons';
+    return 'afternoons';
   } else if (moment().isBefore(moment().hour(24))) {
-    return 'cold night';
+    return 'night';
   } else {
-    return 'cold night';
+    return 'dawnings';
   }
 };
