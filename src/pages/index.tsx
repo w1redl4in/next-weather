@@ -1,11 +1,8 @@
-import { Container } from '../components/AppContainer/styles';
-import { WeatherInfo } from '../components/WeatherInfo';
-import { WeatherRegion } from '../components/WeatherRegion';
-
-import { isMobile } from 'react-device-detect';
-
 import { useCallback, useEffect, useState } from 'react';
+import { Container } from '../components/AppContainer/styles';
+import { Weather } from '../components/Weather';
 import { getFromLocalStorage } from '../utils/localStorage';
+import { isMobile } from 'react-device-detect';
 
 export default function Home() {
   const fillImage: any = useCallback(async () => {
@@ -23,8 +20,7 @@ export default function Home() {
 
   return (
     <Container image={image}>
-      <WeatherRegion />
-      <WeatherInfo />
+      <Weather />
     </Container>
   );
 }

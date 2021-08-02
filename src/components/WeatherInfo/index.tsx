@@ -1,54 +1,82 @@
-import * as WeatherInfoStyles from "./styles";
-export const WeatherInfo = () => {
-  const details = [
+import * as WeatherInfoStyles from './styles';
+
+type WeatherInfoProps = {
+  feelsLike?: number;
+  minTemp?: number;
+  maxTemp?: number;
+  humidity?: number;
+  wind?: number;
+  clouds?: number;
+};
+export const WeatherInfo: React.FC<WeatherInfoProps> = ({
+  clouds,
+  feelsLike,
+  humidity,
+  maxTemp,
+  minTemp,
+  wind,
+}) => {
+  const nextDays = [
     {
-      name: "Nuvens",
-      number: "86%",
+      day: 'Segunda',
+      temp: '5°',
     },
     {
-      name: "Humidade",
-      number: "62%",
+      day: 'Terça',
+      temp: '1°',
     },
     {
-      name: "Vento",
-      number: "8km/h",
+      day: 'Quarta',
+      temp: '12°',
     },
     {
-      name: "Chuva",
-      number: "8mm",
+      day: 'Quinta',
+      temp: '17°',
+    },
+    {
+      day: 'Sexta',
+      temp: '21°',
     },
   ];
 
-  const nextDays = [
-    {
-      day: "Segunda",
-      temp: "5°",
+  const details = {
+    'Sensação térmica': {
+      value: feelsLike,
+      format: '°',
     },
-    {
-      day: "Terça",
-      temp: "1°",
+    Máxima: {
+      value: maxTemp,
+      format: '°',
     },
-    {
-      day: "Quarta",
-      temp: "12°",
+    Mínima: {
+      value: minTemp,
+      format: '°',
     },
-    {
-      day: "Quinta",
-      temp: "17°",
+    Humidade: {
+      value: humidity,
+      format: '°',
     },
-    {
-      day: "Sexta",
-      temp: "21°",
+    Nuvens: {
+      value: clouds,
+      format: 'km',
     },
-  ];
+    Vento: {
+      value: wind,
+      format: 'km',
+    },
+  };
 
   return (
     <WeatherInfoStyles.Container>
       <h1>Detalhes do clima</h1>
-      {details.map((detail) => (
-        <WeatherInfoStyles.WeatherDetails key={detail.name}>
-          <h1>{detail.name}</h1>
-          <span>{detail.number}</span>
+
+      {Object.entries(details).map(([key, value]) => (
+        <WeatherInfoStyles.WeatherDetails>
+          <h1>{key}</h1>
+          <span>
+            {value.value?.toFixed(0)}
+            {value.format}
+          </span>
         </WeatherInfoStyles.WeatherDetails>
       ))}
 
