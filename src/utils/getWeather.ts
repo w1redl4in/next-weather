@@ -1,5 +1,4 @@
 import API from '../services/axios';
-import moment from 'moment';
 import { setInLocalStorage } from './localStorage';
 
 export const getWeather = async (lat: number, lon: number) => {
@@ -9,7 +8,7 @@ export const getWeather = async (lat: number, lon: number) => {
     )}`
   );
 
-  setInLocalStorage('clima', response.data, moment().add(1, 'hour'));
+  setInLocalStorage('clima', response.data, 3);
 
   return response.data;
 };

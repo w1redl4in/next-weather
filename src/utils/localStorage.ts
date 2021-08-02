@@ -10,8 +10,9 @@ export const setInLocalStorage = (
   const now = moment();
 
   const item = {
+    key,
     value: value,
-    expiry: now + ttl,
+    expiry: moment(now).add(ttl, 'hour'),
   };
 
   localStorage.setItem(key!, JSON.stringify(item));
@@ -37,10 +38,16 @@ export const getFromLocalStorage = async (
 
   const item = JSON.parse(itemStringifado);
 
-  if (moment().isAfter(item.expiry)) {
+  // console.log(`
+  //   key: ${key}
+  //   moment(): ${moment()}
+  //   expireTime: ${item.expiry}
+  //   isAfter: ${moment().isAfter(moment(item.expiry))}
+  // `);
+
+  if (moment().isAfter(moment(item.expiry))) {
     localStorage.removeItem(key);
     return null;
   }
-
   return item.value;
 };

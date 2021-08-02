@@ -1,6 +1,5 @@
 import unsplashApi from '../services/unsplash';
 import { setInLocalStorage } from './localStorage';
-import moment from 'moment';
 import { returnImageQueryAccordingToTime } from './photoQuery';
 
 export const getBackgroundPhoto = async (isMobile: boolean) => {
@@ -10,11 +9,7 @@ export const getBackgroundPhoto = async (isMobile: boolean) => {
   });
 
   if (unsplash.response) {
-    setInLocalStorage(
-      'imagem',
-      unsplash.response.results[0].urls.full,
-      moment().add(1, 'hour')
-    );
-    return unsplash.response.results[0].urls.full;
+    setInLocalStorage('imagem', unsplash.response.results[3].urls.full, 3);
+    return unsplash.response.results[3].urls.full;
   }
 };
