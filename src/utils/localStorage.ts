@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { getBackgroundPhoto } from './getPhoto';
+import { getWeather } from './getWeather';
 
 export const setInLocalStorage = (
   key: string | undefined,
@@ -16,12 +17,22 @@ export const setInLocalStorage = (
   localStorage.setItem(key!, JSON.stringify(item));
 };
 
-export const getFromLocalStorage = async (key: string, isMobile: boolean) => {
+export const getFromLocalStorage = async (
+  key: string,
+  isMobile: boolean,
+  lat?: number,
+  lon?: number
+) => {
   const itemStringifado = localStorage.getItem(key);
 
   if (!itemStringifado) {
-    const photo = await getBackgroundPhoto(isMobile);
-    return photo;
+    if (key === 'imagem') {
+      const photo = await getBackgroundPhoto(isMobile);
+      return photo;
+    } else if (lat && lon) {
+      const response = await getWeather(lat, lon);
+      return response;
+    } else return null;
   }
 
   const item = JSON.parse(itemStringifado);
