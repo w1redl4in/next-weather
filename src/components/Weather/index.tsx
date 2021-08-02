@@ -69,9 +69,6 @@ export const Weather = () => {
       navigator.geolocation.getCurrentPosition(success, error);
     }
   }, []);
-
-  console.log('como tá o clima no state', weather);
-
   useEffect(() => {
     const handleWeather = async () => {
       const response: IWeather = await getFromLocalStorage(
