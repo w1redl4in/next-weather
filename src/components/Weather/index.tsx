@@ -28,8 +28,14 @@ export type IWeather = {
   name: string;
 };
 
+type ICoords = {
+  lat: number;
+  lon: number;
+};
+
 export const Weather = () => {
   const [weather, setWeather] = useState<IWeather>();
+  const [coords, setCoords] = useState<ICoords>();
 
   useEffect(() => {
     async function success(position: any) {
@@ -37,6 +43,11 @@ export const Weather = () => {
       const longitude = position.coords.longitude;
 
       console.log('latitude', latitude, 'longitude', longitude);
+
+      setCoords({
+        lat: latitude,
+        lon: longitude,
+      });
 
       const response: IWeather = await getFromLocalStorage(
         'clima',
@@ -58,6 +69,24 @@ export const Weather = () => {
       navigator.geolocation.getCurrentPosition(success, error);
     }
   }, []);
+
+  console.log('como tá o clima no state', weather);
+
+  useEffect(() => {
+    const handleWeather = async () => {
+      const response: IWeather = await getFromLocalStorage(
+        'clima',
+        isMobile,
+        coords?.lat,
+        coords?.lon
+      );
+      setWeather(response);
+    };
+
+    if (weather === null) {
+      handleWeather();
+    }
+  }, [weather]);
 
   return (
     <>
