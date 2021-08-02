@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { getFromLocalStorage } from '../../utils/localStorage';
-import { WeatherInfo } from '../WeatherInfo';
-import { WeatherRegion } from '../WeatherRegion';
+import { WeatherInfo } from './WeatherInfo';
+import { WeatherRegion } from './WeatherRegion';
 
 export type IWeather = {
   weather: [
