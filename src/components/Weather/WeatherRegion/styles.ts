@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -49,4 +49,8 @@ export const TimeAndRegionContainer = styled.div`
 
 export const IconAndDescriptionContainer = styled.div`
   text-align: center;
+
+  img {
+    filter: drop-shadow(0 0 0.8rem black);
+  }
 `;
