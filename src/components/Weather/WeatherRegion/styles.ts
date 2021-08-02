@@ -48,7 +48,14 @@ export const TimeAndRegionContainer = styled.div`
 `;
 
 export const IconAndDescriptionContainer = styled.div`
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  strong {
+    color: ${({ theme }) => theme.colors.text.primary};
+    text-shadow: 1px 1px 20px ${({ theme }) => theme.colors.black};
+  }
 
   img {
     filter: drop-shadow(0 0 0.8rem black);
