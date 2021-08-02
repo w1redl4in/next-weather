@@ -71,7 +71,7 @@ export const WeatherInfo: React.FC<WeatherInfoProps> = ({
       <h1>Detalhes do clima</h1>
 
       {Object.entries(details).map(([key, value]) => (
-        <WeatherInfoStyles.WeatherDetails>
+        <WeatherInfoStyles.WeatherDetails key={key}>
           <h1>{key}</h1>
           <span>
             {value.value?.toFixed(0)}
