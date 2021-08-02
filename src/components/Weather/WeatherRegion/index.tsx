@@ -22,7 +22,7 @@ export const WeatherRegion: React.FC<WeatherRegionProps> = ({
         <WeatherRegionStyles.TimeAndRegionContainer>
           <h1>{name}</h1>
           <span>
-            {moment().locale('pt-br').format('HH:MM - dddd - M MMM  "D')}
+            {moment().locale('pt-br').format('HH:mm - dddd - M MMM  "D')}
           </span>
         </WeatherRegionStyles.TimeAndRegionContainer>
         <WeatherRegionStyles.IconAndDescriptionContainer>
