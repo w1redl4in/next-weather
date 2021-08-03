@@ -9,7 +9,7 @@ export const getBackgroundPhoto = async (isMobile: boolean) => {
   });
 
   if (unsplash.response) {
-    setInLocalStorage('imagem', unsplash.response.results[3].urls.full, 3);
-    return unsplash.response.results[3].urls.full;
+    setInLocalStorage('imagem', unsplash.response.results[5].urls.full, 3);
+    return unsplash.response.results[5].urls.full;
   }
 };
