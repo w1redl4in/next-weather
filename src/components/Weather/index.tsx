@@ -1,89 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
-import { getFromLocalStorage } from '../../utils/localStorage';
+import { useWeather } from '../../contexts/weather';
 import { WeatherInfo } from './WeatherInfo';
 import { WeatherRegion } from './WeatherRegion';
 
-export type IWeather = {
-  weather: [
-    {
-      description: string;
-      icon: string;
-      main: string;
-    }
-  ];
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    humidity: number;
-  };
-  wind: {
-    speed: number;
-  };
-  clouds: {
-    all: number;
-  };
-  name: string;
-};
-
-type ICoords = {
-  lat: number;
-  lon: number;
-};
-
 export const Weather = () => {
-  const [weather, setWeather] = useState<IWeather>();
-  const [coords, setCoords] = useState<ICoords>();
-
+  const { getUserGeolocation, weather } = useWeather();
   useEffect(() => {
-    async function success(position: any) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-
-      console.log('latitude', latitude, 'longitude', longitude);
-
-      setCoords({
-        lat: latitude,
-        lon: longitude,
-      });
-
-      const response: IWeather = await getFromLocalStorage(
-        'clima',
-        isMobile,
-        latitude,
-        longitude
-      );
-      setWeather(response);
-    }
-
-    function error(e: any) {
-      console.log('Unable to retrieve your location', e);
-    }
-
-    if (!navigator.geolocation) {
-      console.log('Geolocation is not supported by your browser');
-    } else {
-      console.log('Locating…');
-      navigator.geolocation.getCurrentPosition(success, error);
-    }
+    getUserGeolocation(isMobile);
   }, []);
-  useEffect(() => {
-    const handleWeather = async () => {
-      const response: IWeather = await getFromLocalStorage(
-        'clima',
-        isMobile,
-        coords?.lat,
-        coords?.lon
-      );
-      setWeather(response);
-    };
-
-    if (weather === null) {
-      handleWeather();
-    }
-  }, [weather]);
 
   return (
     <>

@@ -23,14 +23,18 @@ export const getFromLocalStorage = async (
   key: string,
   isMobile: boolean,
   lat?: number,
-  lon?: number
+  lon?: number,
+  temp?: number
 ) => {
   const itemStringifado = localStorage.getItem(key);
 
   if (!itemStringifado) {
     if (key === 'imagem') {
-      const photo = await getBackgroundPhoto(isMobile);
-      return photo;
+      if (temp) {
+        const photo = await getBackgroundPhoto(isMobile, temp);
+        return photo;
+      }
+      return null;
     } else if (lat && lon) {
       const response = await getWeather(lat, lon);
       return response;

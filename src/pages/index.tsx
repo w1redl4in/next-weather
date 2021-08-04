@@ -1,22 +1,16 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Container } from '../components/AppContainer/styles';
 import { Weather } from '../components/Weather';
-import { getFromLocalStorage } from '../utils/localStorage';
 import { isMobile } from 'react-device-detect';
+import { useImage } from '../contexts/image';
+import { useWeather } from '../contexts/weather';
 
 export default function Home() {
-  const fillImage: any = useCallback(async () => {
-    const photo = await getFromLocalStorage('imagem', isMobile);
-    return setImage(photo);
-  }, []);
-
-  const [image, setImage] = useState(fillImage);
-
+  const { handleImage, image } = useImage();
+  const { weather } = useWeather();
   useEffect(() => {
-    if (image === null) {
-      fillImage();
-    }
-  }, [image]);
+    if (weather) handleImage(isMobile, weather.main.temp);
+  }, [weather]);
 
   return (
     <Container image={image}>
