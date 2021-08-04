@@ -8,8 +8,8 @@ import { theme } from '../styles/theme';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <ImageProvider>
-        <WeatherProvider>
+      <WeatherProvider>
+        <ImageProvider>
           <Head>
             <title>next.weather</title>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,8 +21,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           </Head>
           <GlobalStyles />
           <Component {...pageProps} />
-        </WeatherProvider>
-      </ImageProvider>
+        </ImageProvider>
+      </WeatherProvider>
     </ThemeProvider>
   );
 }

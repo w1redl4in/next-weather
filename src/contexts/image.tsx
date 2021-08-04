@@ -3,7 +3,7 @@ import { getFromLocalStorage } from '../utils/localStorage';
 
 interface ImageContextProps {
   image: string;
-  handleImage: (isMobile: boolean) => Promise<void>;
+  handleImage: (isMobile: boolean, temp: number) => Promise<void>;
 }
 
 interface ImageState {
@@ -15,8 +15,14 @@ const ImageContext = createContext<ImageContextProps>({} as ImageContextProps);
 const ImageProvider: React.FC = ({ children }) => {
   const [image, setImage] = useState<ImageState | any>();
 
-  const handleImage = useCallback(async (isMobile: boolean) => {
-    const response = await getFromLocalStorage('imagem', isMobile);
+  const handleImage = useCallback(async (isMobile: boolean, temp: number) => {
+    const response = await getFromLocalStorage(
+      'imagem',
+      isMobile,
+      undefined,
+      undefined,
+      temp
+    );
     setImage(response);
   }, []);
 
